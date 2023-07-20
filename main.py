@@ -33,6 +33,7 @@ def on_startup():
 def get_session():
     with Session(engine) as session:
         yield session
+        print(123)
 
 
 class User(BaseModel):
@@ -145,6 +146,8 @@ def update_hero(name: str, seesion: Session = Depends(get_session)):
     seesion.refresh(hero)
     return hero
 
+def say(data):
+    print(data)
 
 @app.get("/herofilter", response_model=list[HeroResponse])
 def filter_hero(seesion: Session = Depends(get_session)):
@@ -177,5 +180,6 @@ def filter_hero(seesion: Session = Depends(get_session)):
     stmt = select(Hero)
     print(stmt)
     ret = seesion.exec(stmt).all()
+    say(ret)
     print(ret)
     return ret

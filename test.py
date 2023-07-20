@@ -52,7 +52,6 @@ def create_heroes():  #
         print("Hero 2 name:", hero_2.name)
         print("Hero 3 name:", hero_3.name)
 
-
 def main():  #
     # create_db_and_tables()  #
     # create_heroes()  #
